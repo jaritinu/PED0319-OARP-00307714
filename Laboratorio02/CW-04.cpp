@@ -12,8 +12,11 @@ int main(void){
     Address ad1;
 
     cout<< "Numero de casa: ";cin>>ad1.houseNumber;
-    cout<< "Numero de ciudad: ";cin>>ad1.city;
+    cin.ignore();
+    cout<< "Nombre de ciudad: ";cin>>ad1.city;
+    cin.ignore();
     cout<< "Numero de departamaneto: ";cin>>ad1.state;
+    cin.ignore();
 
     printInfo(ad1);
 
@@ -21,7 +24,7 @@ int main(void){
 }
 
 void printInfo(Address printAd){
-    cout<< "No.de casa:\t "<< printAd.houseNumber;
-    cout<< "Ciudad:\t "<<printAd.city;
-    cout<< "Departamaneto:\t "<<printAd.state;
+    cout<< "No.de casa:\t "<< printAd.houseNumber<<endl;
+    cout<< "Ciudad:\t "<<printAd.city<<endl;
+    cout<< "Departamaneto:\t "<<printAd.state<<endl;
 }
