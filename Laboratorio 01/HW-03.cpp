@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string.h>
+#include <string.h>// se utiliza la funcion length()
 using namespace std;
 
 int alfa(string c, int n);
@@ -7,7 +7,7 @@ int alfa(string c, int n);
 int main (void){
     string test1 = "micadena";
     string test2 = "m1c4d3n4";
-    int n = test1.length();//obetener el largo de la cadena
+    int n = test1.length();//obtener el largo de la cadena
     int aux = 0;
     
     aux = alfa(test1,n);

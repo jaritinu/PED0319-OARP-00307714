@@ -12,4 +12,11 @@ Repositorio de trabajo para la materia Programación de Estructuras Dinámicas (
 
 ## Tarea 3
 
+* En este programa se desea saber si la cadena contiene numeros y letras o solo letras, se utilizan cadenas ya predeterminadas en el progragrama, no son ingresedas por el usuario.
+* Me axulie de la funcion lenght() de la libreria string.h
+
+
 ## Tarea 4
+
+* Programa para sumar los multiplos de 7 de un arreglo de numeros aleatorios, me axulie de las funciones usadas en el primer ejercicio.
+* Utilice punteros para manejar el arreglo

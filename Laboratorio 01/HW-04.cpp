@@ -16,7 +16,7 @@ int main(void){
 void fillArray(int *p, int n){
     int num=0;
     for( int i = 0; i <= n; i++){
-        num=1+rand()%(76-1);
+        num=1+rand()%(76-1);//genera los aletarios en ese rango
         *(p+i)=num;
     }
 }
