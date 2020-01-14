@@ -7,7 +7,7 @@ int alfa(string c, int n);
 int main (void){
     string test1 = "micadena";
     string test2 = "m1c4d3n4";
-    int n = test1.length();
+    int n = test1.length();//obetener el largo de la cadena
     int aux = 0;
     
     aux = alfa(test1,n);
@@ -27,7 +27,7 @@ int alfa(string c, int n){
         aux=c[i];
         if(aux >='0' &&  aux <= '9' ){
             result=0;
-            i=n;
+            i=n;//se realiza esta accion para terminar el ciclo
         }
         else{
             result=-1;
