@@ -16,3 +16,26 @@ Repositorio de trabajo para la materia Programación de Estructuras Dinámicas (
 ## Dificultades
 
 * Los arreglos dinamicos son concepto nuevo, Lo habia visto en internet que era usado, pero nunca lo habia ucupado
+
+# Laboratorio 3
+
+## Observaciones
+
+## Dificultades
+
+* A veces es dificil establecer el caso recursivo
+
+# Laboratorio 4
+
+## Observaciones
+
+## Dificultades
+
+# Laboratorio 5
+
+## Observaciones
+
+## Dificultades
+
+* El manejo de los punteros es lo mas dificil
+
