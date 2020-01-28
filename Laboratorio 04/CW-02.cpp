@@ -1,63 +1,49 @@
 #include <iostream>
 #include <string>
+
 using namespace std;
 
-struct Address
-{
-    int houseNumber;
-    string city, state;
+struct dataStudents{
+    string name, report;
+    float grade;
 };
 
-struct personalInfo
-{
-    string name;
-    int age;
-    Address pAddress;
-};
-void printInfo(personalInfo *p1, int size, int pos);
-
-int main(void)
-{
-    personalInfo *pData;
+void fillArray(dataStudents* array, int size,int aux);
+void printArray(dataStudents* array, int size,int aux);
+int main (void){
     int size = 0;
-
-    cout << "Cantidad de datos a  ingresar: ";
     cin >> size;
-    pData = new personalInfo[size];
+    cin.ignore();
+    dataStudents* students;
+    students = new dataStudents[size];
 
-    for (int i = 0; i < size; i++)
-    {
-        cout << "\nNombre: ";
-        cin >> pData[i].name;
-        cout << "\nEdad: ";
-        cin >> (pData + i)->age;
-        cout << "\nNumero de casa: ";
-        cin >> pData[i].pAddress.houseNumber;
-        cin.ignore();
-        cout << "\nCiudad: ";
-        getline(cin, (pData + i)->pAddress.city);
+    fillArray(students,size,0);
+    printArray(students,size,0);
 
-        cout << "\nEstado: ";
-        getline(cin, (pData + i)->pAddress.state);
-    }
-
-    printInfo(pData, size, 0);
     return 0;
 }
 
-void printInfo(personalInfo *p1, int size, int pos)
-{
-    if (pos == size)
-    {
+void fillArray(dataStudents* array, int size,int aux){
+    if(size == aux)
         return;
+    else{
+        cout << "Nombre: "; getline(cin, array[aux].name);
+        cout << "Comentarios: "; getline(cin, array[aux].report);
+        cout << "Notas: "; cin>> array[aux].grade;
+        cin.ignore();
+
+        fillArray(array,size,aux+1);
     }
-    else
-    {
-        printInfo(p1, size, pos + 1);
-        cout << "\nNombre: " << p1[pos].name << endl;
-        cout << "\nEdad: " << p1[pos].age << endl;
-        cout << "\nNumero de casa: " << p1[pos].pAddress.houseNumber << endl;
-        cout << "\nCiudad:  " << p1[pos].pAddress.city << endl;
-        cout << "\nEstado: " << p1[pos].pAddress.state << endl;
+}
+
+void printArray(dataStudents* array, int size,int aux){
+    if(size == aux)
+        return;
+    else{
+        cout << "Nombre: " << array[aux].name;
+        cout << "Comentarios: "<< array[aux].report;
+        cout << "Notas: " << array[aux].grade;
+
+        printArray(array,size,aux+1);
     }
 }

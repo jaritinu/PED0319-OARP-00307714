@@ -1,18 +1,35 @@
-#include<iostream>
+#include <iostream>
+#include <math.h>
 using namespace std;
 
-int addNumber(int limit, int aux);
+struct monomio{
+    float coef, exp;
+};
+
+float evaluate(monomio* array, int size, int aux);
 
 int main(void){
-    cout << addNumber(10,1) << endl;
+    int size=0;
+    monomio* array;
+    cin>>size;
+    cin.ignore();
+
+    array = new monomio[size];
+    for(int i=0;i<size;i++){
+        cin>>array[i].coef >> array[i].exp;
+    }
+    cout << evaluate(array,size,0)<<endl;
+
     return 0;
 }
 
-int addNumber(int limit, int aux){
-    if(aux==limit){
-        return aux;
+float evaluate(monomio* array, int size, int aux){
+    if(aux == size){
+        return 0;
     }
-    else{
-        return aux + addNumber(limit, aux+1);
+    else
+    {
+        return pow(array[aux].coef,array[aux].exp)+evaluate(array,size,aux+1);
     }
+    
 }

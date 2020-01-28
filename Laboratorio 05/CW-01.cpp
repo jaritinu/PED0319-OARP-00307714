@@ -1,40 +1,102 @@
+//PILA DE CAJAS
+//peso, contenido, destino
 
 #include <iostream>
-#include <math.h>
+#include <stack>
+#include <string>
 
 using namespace std;
-bool isPrime(int n);
-int addPrimes(int start, int primeQ, int aux);
+
+struct pack{
+    string content, address;
+    float weight;
+};
 
 int main(void){
-    int n=0;
-    cin>>n;
-    cout << addPrimes(2,n,0)<<endl;
+    int option = 0;
+    stack <pack> st;
+    pack aux;
+
+    do{
+        cout << "Peso: "; cin >> aux.weight; cin.ignore();
+        cout << "Contenido: "; getline(cin,aux.content);
+        cout << "Destino: "; getline(cin, aux.address);
+
+        st.push(aux);
+
+        cout << "Ingresar mas datos (1 = si, 0 = no)\t"; cin >> option;
+        cin.ignore();
+
+    }while(option != 0);
+
+    aux = st.top();
+
     return 0;
 }
-bool isPrime(int n){
-    if(n==2){
-        return true;
-    }
+
+/*struct node{
+    int n;
+    node* next;
+};
+
+typedef node* st;
+
+void initialize(st* s);
+void push(st* s, int n);
+int top(st* s);
+int pop(st* s);
+
+int main(void){
+    st s;
+
+    initialize(&s);
+
+    push(&s, 5);
+    push(&s, 7);
+    push(&s, 4);
+    push(&s, 1);
+
+    cout << top(&s) << endl;
+
+    cout << pop(&s) << endl;
+    cout << pop(&s) << endl;
+    cout << pop(&s) << endl;
+
+    cout << top(&s) << endl;
+
+    return 0;
+}
+
+void initialize(st* s){
+    *s = NULL;
+}
+
+void push(st* s, int n){
+    node* newNode = new node;
+    newNode->n = n;
+    newNode->next = *s;
+
+    *s = newNode;
+}
+
+int top(st* s){
+    if(!(*s))
+        return -1;
+    else
+        return (*s)->n;
+}
+
+int pop(st* s){
+    if(!(*s))
+        return -1;
     else{
-        for(int i=2;i<=sqrt(n);i++){
-            if(n%i==0)
-            return false;
-        }
-        return true;
+        int aux = (*s)->n;
+        *s = (*s)->next;
+        return aux;
     }
 }
 
-int addPrimes(int start, int primeQ, int aux){
-    if(aux == primeQ){
-        return 0;
-    }
-    else{
-        if(isPrime(start) == true){
-            return start + addPrimes(start + 1, primeQ, aux+1);
-        }
-        else{
-            return 0 + addPrimes(start + 1, primeQ, aux);
-        }
-    }
-}
+bool isEmpty(st* s){
+    return *s == NULL;
+}*/
+

@@ -3,47 +3,83 @@
 
 using namespace std;
 
-struct dataStudents{
-    string name, report;
-    float grade;
+struct node{
+    string content, address;
+    float weight;
+    node* next;
 };
 
-void fillArray(dataStudents* array, int size,int aux);
-void printArray(dataStudents* array, int size,int aux);
-int main (void){
-    int size = 0;
-    cin >> size;
-    cin.ignore();
-    dataStudents* students;
-    students = new dataStudents[size];
+typedef node* st;
+void push(st* pSt, string content, string address, float weight);
 
-    fillArray(students,size,0);
-    printArray(students,size,0);
+int main(void){
+    st pSt = NULL;
+    int option = 0;
+    string content, address;
+    float weight;
 
+    do{
+        cout << "Peso: "; cin >> weight; cin.ignore();
+        cout << "Contenido: "; getline(cin,content);
+        cout << "Destino: "; getline(cin, address);
+
+        push(&pSt,content,address,weight);
+
+        cout << "Ingresar mas datos (1 = si, 0 = no)\t"; cin >> option;
+        cin.ignore();
+
+    }while(option != 0);
+
+    node aux = top(&pSt);
+    cout << "Peso: " << aux.weight <<endl;
+    cout << "Contenido: " << aux.content <<endl;
+    cout << "Direccion: " << aux.address <<endl;
+
+    aux = pop(&pSt);
+    
     return 0;
 }
 
-void fillArray(dataStudents* array, int size,int aux){
-    if(size == aux)
-        return;
-    else{
-        cout << "Nombre: "; getline(cin, array[aux].name);
-        cout << "Comentarios: "; getline(cin, array[aux].report);
-        cout << "Notas: "; cin>> array[aux].grade;
-        cin.ignore();
+void push(st* pSt, string content, string address, float weight){
+    node* newNode = new node;
+    newNode->content = content;
+    newNode->address = address;
+    newNode->weight = weight;
+    newNode->next = *pSt;
 
-        fillArray(array,size,aux+1);
-    }
+    *pSt = newNode;
 }
 
-void printArray(dataStudents* array, int size,int aux){
-    if(size == aux)
-        return;
+node top(st* pSt){
+    node aux;
+    if(!(*pSt)){    
+        aux.address="";
+        aux.content="";
+        aux.weight=0;
+        aux.next=NULL;
+        return aux;
+    }    
     else{
-        cout << "Nombre: " << array[aux].name;
-        cout << "Comentarios: "<< array[aux].report;
-        cout << "Notas: " << array[aux].grade;
-
-        printArray(array,size,aux+1);
+        aux.address=(*pSt)->address;
+        aux.content=(*pSt)->content;
+        aux.weight=(*pSt)->weight;
     }
+    return aux;
+}
+
+node pop(st* pSt){
+    node aux;
+    if(!(*pSt)){    
+        aux.address="";
+        aux.content="";
+        aux.weight=0;
+        aux.next=NULL;
+        return aux;
+    }    
+    else{
+        aux.address=(*pSt)->address;
+        aux.content=(*pSt)->content;
+        aux.weight=(*pSt)->weight;
+    }
+    return aux;
 }
