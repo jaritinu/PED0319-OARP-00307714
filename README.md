@@ -39,3 +39,18 @@ Repositorio de trabajo para la materia Programación de Estructuras Dinámicas (
 
 * El manejo de los punteros es lo mas dificil
 
+# Laboratorio 6
+
+## Observaciones
+
+## Dificultades
+
+* El manejo de los punteros es lo mas dificil
+
+# Laboratorio 7
+
+## Observaciones
+
+## Dificultades
+
+* El manejo de los punteros es lo mas dificil
