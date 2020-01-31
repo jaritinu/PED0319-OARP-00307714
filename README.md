@@ -53,4 +53,4 @@ Repositorio de trabajo para la materia Programación de Estructuras Dinámicas (
 
 ## Dificultades
 
-* El manejo de los punteros es lo mas dificil
+* Los iteradores
