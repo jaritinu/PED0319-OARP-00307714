@@ -54,3 +54,11 @@ Repositorio de trabajo para la materia Programación de Estructuras Dinámicas (
 ## Dificultades
 
 * Los iteradores
+
+# Laboratorio 8
+
+## Observaciones
+
+## Dificultades
+
+* El formato de punteros dobles
