@@ -1,91 +1,74 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-
-struct node{
-    int n;
-    node *left, *right;
+struct completeName{
+    string name,lastName;
 };
 
 
-void inOrder(node* pTree);
-void postOrder(node* pTree);
-void preOrder(node* pTree);
+struct node{
+    completeName person;
+    node* left,* right;
+};
+
+void insertInTree(node** tree, string word);
+completeName solicitarDato();
+
+int main (void){
+    node * pTree = NULL;
+
+    bool continuar = true;
+    do{
+        int opcion = 0;
+        cout << "\nMenu: \n";
+        cout << "\t1) Agregar\n";
+        cout << "\t2) Recorrer\n";
+        cout << "\t3) Salir\n";
+        cout << "\tOpcion elegida: ";
+        cin >> opcion;
+        switch(opcion){
+            case 1: solicitarDato(pTree); break;
+            case 2: recorrerArbol(arbol); break;
+            case 3: continuar = false; break;
+            default: cout << "Opcion erronea!" << endl; break;
+        }
+    }while(continuar);
 
 
-void insertInTree(node** tree, int n);
-node* createleaf(int n);
-
-int main(void){
-    node* pTree = NULL;
-    insertInTree(&pTree,12);
-    insertInTree(&pTree,22);
-    insertInTree(&pTree,8);
-    insertInTree(&pTree,15);
-    insertInTree(&pTree,1);
-    insertInTree(&pTree,0);
-    insertInTree(&pTree,27);
-
-    cout << "Imprimiendo en preOrder" << endl;
-    preOrder(pTree); cout << endl << endl;
-
-    cout << "Imprimiendo en inOrder" << endl;
-    inOrder(pTree); cout << endl << endl;
-
-    cout << "Imprimiendo en postOrder" << endl;
-    postOrder(pTree); cout << endl << endl;
+    insertInTree(&pTree, "Hola");
+    insertInTree(&pTree, "Pupusas");
+    insertInTree(&pTree, "Codigo");
+    insertInTree(&pTree, "Adios");
+    insertInTree(&pTree, "F");
     return 0;
 }
 
-node* createleaf(int n){
+node* createleaf(string word){
     node * leaf = new node;
-    leaf->n = n;
+    leaf->person.lastName = word;
     leaf->left = NULL;
     leaf->right = NULL;
 
     return leaf; 
 }
 
-void insertInTree(node** tree, int n){
+void insertInTree(node** tree, string word){
     if(!(*tree)){
-        *tree = createleaf(n);
+        *tree = createleaf(word);
     }
     else{
-        if(n <= (*(*tree)).n)
-            insertInTree(&(*(*tree)).left,n);
+        if(word.compare((*(*tree)).person.lastName)<=0)
+            insertInTree(&(*(*tree)).left,word);
         else
-            insertInTree(&(*(*tree)).right,n);
+            insertInTree(&(*(*tree)).right,word);
     }
 }
+completeName solicitarDato(){
+    completeName unDato;
 
-void postOrder(node* pTree){
-    if(!pTree)
-        return;
-    else{
-        postOrder(pTree->left);
-        postOrder(pTree->right);
-        cout << pTree->n << "\t";
-        
-    }
-}
-
-void preOrder(node* pTree){
-    if(!pTree)
-        return;
-    else{
-        cout << pTree->n << "\t";
-        preOrder(pTree->left);
-        preOrder(pTree->right);
-    }
-}
-
-void inOrder(node* pTree){
-    if(!pTree)
-        return;
-    else{
-        inOrder(pTree->left);
-        cout << pTree->n << "\t";
-        inOrder(pTree->right);
-    }
+    cin >> unDato.name; cin.ignore();
+    cin >> unDato.lastName; cin.ignore();
+    return unDato;
 }
